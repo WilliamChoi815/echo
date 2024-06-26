@@ -4,8 +4,6 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
-import java.awt.print.Book
-import kotlin.reflect.jvm.internal.impl.descriptors.Visibilities.Private
 
 @RestController
 class BookApiController {
@@ -15,6 +13,7 @@ class BookApiController {
     fun addBook(
         @RequestBody book: Book
     ) {
+        println(book)
         books.add(book)
     }
 
@@ -23,13 +22,11 @@ class BookApiController {
         return books
     }
 
-    class Book(
-        private val number: Int,
-        private val name: String,
-        private val author: String
-    ) {
-        override fun toString(): String {
-            return "$number - $name - $author"
-        }
-    }
+    data class Book(
+        val number: Int,
+        val name: String,
+        val author: String
+    )
+
+
 }

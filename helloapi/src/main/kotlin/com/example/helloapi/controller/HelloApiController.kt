@@ -50,11 +50,12 @@ class HelloApiController {
     }
 
     class Person(
-        private val name: String,
-        private val age: Int
+        val name: String,
+        val age: Int
     ) {
         override fun toString(): String {
             return "$name - $age"
         }
     }
 }
+

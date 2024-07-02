@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
+import kotlin.random.Random
 
 @RestController
 class PersonApiController(
@@ -40,6 +41,14 @@ class PersonApiController(
         @PathVariable id: Int
     ) {
         personRepository.deletePerson(id)
+    }
+
+    @GetMapping("/init")
+    fun init() {
+
+        repeat(1000) {
+            personRepository.createPerson("name$it", Random.nextInt(1, 101))
+        }
     }
 
 }
